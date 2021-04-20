@@ -1,0 +1,44 @@
+  
+<!DOCTYPE html>
+<html>
+<head><script src="/j/out"></script>
+    <title>Func 007</title><meta charset="utf-8"><meta name="author" content="Ilya Gosudarev">
+</head>
+<body>
+<script src="/j/dblttl"></script>
+<script>{
+    let secCount = 0;
+    let addCount = 0;
+    let mpyCount = 0;
+    let pwrCount = 0;
+
+    const sec = a => {
+        secCount = secCount + 1;
+        return 1 + a;
+    }
+    const add = (a, b) => {	
+        addCount += 1;
+        return (b === 0) ? a : sec(add(a, b - 1));
+    }
+    const mpy = (a, b) => {
+        mpyCount += 1;
+        return (b === 1) ? a : add(a, mpy(a, b - 1));
+    }
+    const pwr = (a, b) => {
+        pwrCount += 1;
+        if(b === 0) {
+            return 1;
+        } else {
+            return (b === 1) ? a : mpy(a, pwr(a, b - 1));
+        }
+    }
+    alert(pwr(11, 3));
+
+    console.log("Sec count: ", secCount) 
+    console.log("Add count: ", addCount) 
+    console.log("Mpy count: ", mpyCount) 
+    console.log("Pwr count: ", pwrCount) 
+
+}</script>
+</body>
+</html>
